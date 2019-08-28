@@ -1,0 +1,20 @@
+[report]
+show_missing = True
+exclude_lines =
+    def __unicode__
+    def unicode
+    def str
+    def get_help_text
+    pragma: no cover
+omit =
+    */migrations/*
+    */tests/*
+    */tests.py
+    */wsgi.py
+    */apps.py
+    */admin.py
+    */urls.py
+    backend/*
+    tests/*
+    */__init__.py
+    manage.py

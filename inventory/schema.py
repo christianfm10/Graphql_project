@@ -30,25 +30,41 @@ class Query(graphene.AbstractType):
     all_transactions = graphene.List(TransactionType)
     
     product = graphene.Field(ProductType,id=graphene.Int())
+    location = graphene.Field(LocationType,id=graphene.Int())
+    family = graphene.Field(FamilyType,id=graphene.Int())
 
-    def resolve_all_families(self, args, context, info):
+    def resolve_all_families(self, info):
         return Family.objects.all()
 
-    def resolve_all_locations(self, args, context, info):
+    def resolve_all_locations(self, info):
         return Location.objects.all()
 
-    def resolve_all_products(self, args, context, info):
+    def resolve_all_products(self, info):
         return Product.objects.all()
 
-    def resolve_all_transactions(self, args, context, info):
+    def resolve_all_transactions(self, info):
         return Transaction.objects.all()
 
-    def resolve_product(self, args, context, info):
-        id = args.get('id')
+    def resolve_product(self, info, **kwargs):
+        id = kwargs.get('id')
 
         if id is not None:
             return Product.objects.get(pk=id)
 
         return None
 
-       
+    def resolve_family(self, info, **kwargs):
+        id = kwargs.get('id')
+
+        if id is not None:
+            return Family.objects.get(pk=id)
+
+        return None
+
+    def resolve_location(self, info, **kwargs):
+        id = kwargs.get('id')
+
+        if id is not None:
+            return Location.objects.get(pk=id)
+
+        return None

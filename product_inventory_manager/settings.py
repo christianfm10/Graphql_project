@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'graphene_django',
-    'inventory'
+    'inventory.apps.InventoryConfig',
 ]
 
 GRAPHENE = {
